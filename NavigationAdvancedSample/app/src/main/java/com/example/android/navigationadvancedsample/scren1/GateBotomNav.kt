@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,6 +30,8 @@ class GateBotomNav : Fragment(){
         var owner: ViewModelStoreOwner? = null
     }
 
+    private val viewModel: SharedViewModel by activityViewModels()
+
     private val LAST_SELECTED_ITEM_ID = "lastSelectedItemId"
 
     private var currentNavController: LiveData<NavController>? = null
@@ -39,8 +42,8 @@ class GateBotomNav : Fragment(){
 
         // Because we don't have an Activity as parent for the NavControllerFragments we can't use activityViewModels
         // What i came up with, is storing the ViewModelStoreOwner
-        GateBottomNavInstance.owner = this
-        val viewModel = ViewModelProvider( GateBottomNavInstance.owner as ViewModelStoreOwner).get(SharedViewModel::class.java)
+        //GateBottomNavInstance.owner = this
+        //val viewModel = ViewModelProvider( GateBottomNavInstance.owner as ViewModelStoreOwner).get(SharedViewModel::class.java)
         return view
     }
 

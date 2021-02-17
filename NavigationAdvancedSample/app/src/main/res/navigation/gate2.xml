@@ -18,5 +18,9 @@
         <action
             android:id="@+id/action_gateFragment12_to_leaderboard2"
             app:destination="@id/leaderboard2" />
+        <argument
+            android:name="instance"
+            app:argType="integer"
+            android:defaultValue="2" />
     </fragment>
 </navigation>

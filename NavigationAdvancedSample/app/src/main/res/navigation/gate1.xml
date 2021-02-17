@@ -17,6 +17,10 @@
             android:name="gate1Param"
             app:argType="string"
             android:defaultValue="Default Gate" />
+        <argument
+            android:name="instance"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/mainBotNavFragment2"

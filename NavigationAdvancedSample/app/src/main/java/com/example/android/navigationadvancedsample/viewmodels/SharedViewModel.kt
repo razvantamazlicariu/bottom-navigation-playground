@@ -5,6 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class SharedViewModel : ViewModel() {
+
+    val gate1Title: String = "Instance 1 of Gate"
+    val gate2Title: String = "Instance 2 of Gate"
+
     private val _counter = MutableLiveData<Int>()
     val counter: LiveData<Int> get() { return _counter }
 
