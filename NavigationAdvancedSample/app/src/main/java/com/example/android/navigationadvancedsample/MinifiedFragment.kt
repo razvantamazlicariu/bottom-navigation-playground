@@ -20,11 +20,11 @@ import com.example.android.navigationadvancedsample.viewmodels.SharedViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.lang.ref.WeakReference
 
-class MainBotNavFragment : Fragment() {
+class MinifiedFragment : Fragment() {
     private var currentNavController: LiveData<NavController>? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view =  inflater.inflate(R.layout.fragment_main_bot_nav, container, false)
+        val view =  inflater.inflate(R.layout.fragment_minified, container, false)
         setupBottomNavigationBar(view)
 
         return view;

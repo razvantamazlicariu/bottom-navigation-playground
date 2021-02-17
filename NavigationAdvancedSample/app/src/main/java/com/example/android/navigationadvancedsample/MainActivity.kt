@@ -18,27 +18,26 @@ package com.example.android.navigationadvancedsample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
-/**
- * An activity that inflates a layout that has a [BottomNavigationView].
- */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupActionBarWithNavController(findNavController(R.id.nav_host_fragment))
-        NavControllerContainer.startNavController = findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.nav_host_fragment)
+        // Set's up the Toolbar. Can be removed if we implement a Toolbar for each Fragment
+        setupActionBarWithNavController(navController)
+
+        // Saving the parent NavController for navigation between the 2 fragments that contain a bottomNvaigationView
+        NavControllerContainer.parentNavController = navController
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        // Easy fix to the navigation problem.
+        // For some reason, onBackPressed() works fine and follows the normal back flow
+        onBackPressed()
+        return true
     }
 }
