@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.NavArgument
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -17,10 +19,16 @@ import androidx.navigation.ui.NavigationUI
 import com.example.android.navigationadvancedsample.R
 import com.example.android.navigationadvancedsample.setupWithNavController
 import com.example.android.navigationadvancedsample.setupWithNavControllerWithLastSelectedTabRestore
+import com.example.android.navigationadvancedsample.viewmodels.SharedViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.lang.Exception
 
-class GateBotomNav : Fragment() {
+class GateBotomNav : Fragment(){
+
+    object GateBottomNavInstance {
+        var owner: ViewModelStoreOwner? = null
+    }
+
     private val LAST_SELECTED_ITEM_ID = "lastSelectedItemId"
 
     private var currentNavController: LiveData<NavController>? = null
@@ -29,6 +37,10 @@ class GateBotomNav : Fragment() {
         val view = inflater.inflate(R.layout.fragment_gate_botom_nav, container, false)
         setupBottomNavigationBar(view, arguments?.getInt(LAST_SELECTED_ITEM_ID) ?: -1)
 
+        // Because we don't have an Activity as parent for the NavControllerFragments we can't use activityViewModels
+        // What i came up with, is storing the ViewModelStoreOwner
+        GateBottomNavInstance.owner = this
+        val viewModel = ViewModelProvider( GateBottomNavInstance.owner as ViewModelStoreOwner).get(SharedViewModel::class.java)
         return view
     }
 

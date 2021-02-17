@@ -43,6 +43,27 @@
             android:layout_below="@id/tv_text"
             android:layout_margin="20dp"
             android:text="Enter"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_enter"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <Button
+                android:id="@+id/btn_decrease"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="-"/>
+            <Button
+                android:id="@+id/btn_increase"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="+"/>
+        </LinearLayout>
     </RelativeLayout>
 
 </FrameLayout>
