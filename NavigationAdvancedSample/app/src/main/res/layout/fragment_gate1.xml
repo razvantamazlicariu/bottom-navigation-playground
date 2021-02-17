@@ -9,9 +9,26 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:id="@+id/tv_params"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Parameter list"
+                android:textSize="22sp" />
+            <TextView
+                android:id="@+id/tv_params_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"/>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/tv_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gate 1"
@@ -23,7 +40,7 @@
             android:id="@+id/btn_enter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text"
+            android:layout_below="@id/tv_text"
             android:layout_margin="20dp"
             android:text="Enter"/>
     </RelativeLayout>

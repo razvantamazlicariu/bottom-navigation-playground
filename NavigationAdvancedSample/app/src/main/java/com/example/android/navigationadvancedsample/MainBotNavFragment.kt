@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
@@ -35,6 +36,9 @@ class MainBotNavFragment : Fragment() {
     private fun setupBottomNavigationBar(view: View) {
         val navGraphIds = listOf(R.navigation.home, R.navigation.list, R.navigation.form)
 
+//        bottomNavigationView.setupWithNavController(navController)
+//
+
         val bottomNavigationView = view.findViewById<BottomNavigationView>(R.id.bottom_nav)
         val controller = bottomNavigationView.setupWithNavController(
                 navGraphIds = navGraphIds,
@@ -43,9 +47,9 @@ class MainBotNavFragment : Fragment() {
                 intent = activity!!.intent
         )
 
-        controller.observe(viewLifecycleOwner, Observer { navController ->
-            setupActionBarWithNavController(activity as AppCompatActivity, navController)
-        })
+//        controller.observe(viewLifecycleOwner, Observer { navController ->
+//            setupActionBarWithNavController(activity as AppCompatActivity, navController)
+//        })
         currentNavController = controller
     }
 

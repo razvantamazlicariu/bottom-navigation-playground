@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.example.android.navigationadvancedsample.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,16 +25,34 @@ class GateFragment2 : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        arguments?.let {
+//            param1 = it.getString(ARG_PARAM1)
+//            param2 = it.getString(ARG_PARAM2)
+//        }
+
+
+    }
+
+    override fun setArguments(args: Bundle?) {
+        super.setArguments(args)
+
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            val paramName = "gate1Param"
+            val firstParam = it.getString(paramName)
+            view?.findViewById<TextView>(R.id.tv_params_list)?.text = "$paramName - $firstParam"
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gate2, container, false)
+        val view =  inflater.inflate(R.layout.fragment_gate2, container, false)
+
+        arguments?.let {
+            val firstParam = it.getString("args1")
+            view.findViewById<TextView>(R.id.tv_params_list).text = firstParam
+        }
+        return view;
     }
 
     companion object {
