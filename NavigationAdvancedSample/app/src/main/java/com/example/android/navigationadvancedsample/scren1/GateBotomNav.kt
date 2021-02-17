@@ -56,7 +56,7 @@ class GateBotomNav : Fragment(){
     }
 
     private fun setupBottomNavigationBar(view: View, restoredTabId: Int = -1) {
-        val navGraphIds = listOf(R.navigation.gate1, R.navigation.gate2)
+        val navGraphIds = listOf(R.navigation.gate1, R.navigation.gate2, R.navigation.gate3)
 
         val bottomNavigationView = view.findViewById<BottomNavigationView>(R.id.fragment_gate_bottom_nav)
         val controller = bottomNavigationView.setupWithNavControllerWithLastSelectedTabRestore(

@@ -28,9 +28,6 @@ class GateFragment2 : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_gate2, container, false)
-
-        val viewModel = ViewModelProvider( GateBotomNav.GateBottomNavInstance.owner as ViewModelStoreOwner).get(SharedViewModel::class.java)
-
         return view;
     }
 }

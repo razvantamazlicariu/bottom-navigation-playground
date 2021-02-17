@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".scren1.GateFragment2"
     android:background="@android:color/holo_red_light">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -29,10 +31,10 @@
         android:id="@+id/tv_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/container"
         android:text="Gate 2"
         android:textAlignment="center"
         android:textSize="32sp"
-        android:layout_centerInParent="true"
         android:gravity="center_horizontal" />
         <Button
             android:id="@+id/btn_enter"
@@ -41,6 +43,14 @@
             android:layout_below="@id/tv_text"
             android:layout_margin="20dp"
             android:text="Enter"/>
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentBottom="true"
+            app:navGraph="@navigation/small_fragment" />
     </RelativeLayout>
+
 
 </FrameLayout>
