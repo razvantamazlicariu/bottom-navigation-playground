@@ -10,9 +10,6 @@
         android:name="com.example.android.navigationadvancedsample.scren1.GateFragment1"
         android:label="fragment_gate1"
         tools:layout="@layout/fragment_gate1" >
-        <action
-            android:id="@+id/action_gateFragment1_to_mainBotNavFragment2"
-            app:destination="@id/mainBotNavFragment2" />
         <argument
             android:name="gate1Param"
             app:argType="string"
@@ -21,10 +18,15 @@
             android:name="instance"
             app:argType="integer"
             android:defaultValue="1" />
+        <action
+            android:id="@+id/action_gateFragment1_to_secondBottomNavigationActivity"
+            app:destination="@id/secondBottomNavigationActivity"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/gateFragment1"
+            app:popUpToInclusive="false" />
     </fragment>
-    <fragment
-        android:id="@+id/mainBotNavFragment2"
-        android:name="com.example.android.navigationadvancedsample.MainBotNavFragment"
-        android:label="fragment_main_bot_nav"
-        tools:layout="@layout/fragment_main_bot_nav" />
+    <activity
+        android:id="@+id/secondBottomNavigationActivity"
+        android:name="com.example.android.navigationadvancedsample.SecondBottomNavigationActivity"
+        android:label="SecondBottomNavigationActivity" />
 </navigation>

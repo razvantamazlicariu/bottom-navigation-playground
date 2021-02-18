@@ -27,11 +27,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class SecondBottomNavigationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_second_bottom_navigation)
         setupBottomNavigationBar()
     }
 
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigationBar(restoredTabId: Int = -1) {
-        val navGraphIds = listOf(R.navigation.gate1, R.navigation.gate2, R.navigation.gate3)
+        val navGraphIds = listOf(R.navigation.home, R.navigation.list, R.navigation.form)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.fragment_gate_bottom_nav)
         val controller = bottomNavigationView.setupWithNavControllerWithLastSelectedTabRestore(
@@ -59,15 +59,6 @@ class MainActivity : AppCompatActivity() {
                 containerId = R.id.nav_host_container,
                 intent = intent,
                 lastSelectedTabId = restoredTabId
-        )
-
-        controller.value?.addOnDestinationChangedListener(
-                fun(controller: NavController, destination: NavDestination, arguments: Bundle?) {
-                    if (destination.id == R.id.gateFragment1) {
-                        val navArgument2 = NavArgument.Builder().setDefaultValue("Hello").build()
-                        destination.addArgument("navArg1", navArgument2)
-                    }
-                }
         )
     }
 }

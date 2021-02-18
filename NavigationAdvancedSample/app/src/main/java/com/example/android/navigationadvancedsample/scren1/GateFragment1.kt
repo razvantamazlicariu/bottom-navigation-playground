@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.example.android.navigationadvancedsample.NavControllerContainer
+import androidx.navigation.fragment.findNavController
 import com.example.android.navigationadvancedsample.R
 import com.example.android.navigationadvancedsample.viewmodels.SharedViewModel
 
@@ -23,8 +23,7 @@ class GateFragment1 : Fragment() {
 
         view.findViewById<Button>(R.id.btn_enter).setOnClickListener {
 //            (activity as MainActivity).findNavController().navigate()
-            val startNavController = NavControllerContainer.parentNavController
-            startNavController?.navigate(R.id.action_gateBotomNav_to_mainBotNavFragment3)
+            findNavController().navigate(R.id.action_gateFragment1_to_secondBottomNavigationActivity)
         }
 
         view.findViewById<Button>(R.id.btn_increase).setOnClickListener {
