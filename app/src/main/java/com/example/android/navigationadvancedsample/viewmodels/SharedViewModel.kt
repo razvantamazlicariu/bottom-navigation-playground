@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SharedViewModel : ViewModel() {
+class SharedViewModel(val timelineId: Long) : ViewModel() {
 
     val gate1Title: String = "Instance 1 of Gate"
     val gate2Title: String = "Instance 2 of Gate"

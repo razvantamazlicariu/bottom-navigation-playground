@@ -1,45 +1,36 @@
-package com.example.android.navigationadvancedsample.scren1
+package com.example.android.navigationadvancedsample.picker
 
-import android.os.Bundle
-import android.util.Log
-import android.view.*
-import androidx.fragment.app.Fragment
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.lifecycle.LiveData
 import androidx.navigation.NavArgument
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.NavDirections
-import androidx.navigation.ui.NavigationUI
 import com.example.android.navigationadvancedsample.R
-import com.example.android.navigationadvancedsample.setupWithNavController
 import com.example.android.navigationadvancedsample.setupWithNavControllerWithLastSelectedTabRestore
-import com.example.android.navigationadvancedsample.viewmodels.EditorBaseFragment
-import com.example.android.navigationadvancedsample.viewmodels.SharedViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.lang.Exception
 
-class GateBotomNav : EditorBaseFragment(){
+class PickerFragment : Fragment() {
+    private lateinit var viewModel: PickerViewModel
 
-    object GateBottomNavInstance {
-        var owner: ViewModelStoreOwner? = null
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(PickerViewModel::class.java)
     }
 
     private val LAST_SELECTED_ITEM_ID = "lastSelectedItemId"
 
-    var currentNavController: LiveData<NavController>? = null
+    private var currentNavController: LiveData<NavController>? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_gate_botom_nav, container, false)
+        val view = inflater.inflate(R.layout.picker_fragment, container, false)
         setupBottomNavigationBar(view, arguments?.getInt(LAST_SELECTED_ITEM_ID) ?: -1)
 
-        view.findViewById<TextView>(R.id.tv_instance).text = "GateBottomNav Shared VM Instance:${editorViewModel.hashCode().toString()}"
         // Because we don't have an Activity as parent for the NavControllerFragments we can't use activityViewModels
         // What i came up with, is storing the ViewModelStoreOwner
         //GateBottomNavInstance.owner = this
@@ -56,7 +47,7 @@ class GateBotomNav : EditorBaseFragment(){
     }
 
     private fun setupBottomNavigationBar(view: View, restoredTabId: Int = -1) {
-        val navGraphIds = listOf(R.navigation.gate1, R.navigation.gate2, R.navigation.gate3)
+        val navGraphIds = listOf(R.navigation.media_navigation, R.navigation.text_navigation, R.navigation.music_navigation)
 
         val bottomNavigationView = view.findViewById<BottomNavigationView>(R.id.fragment_gate_bottom_nav)
         val controller = bottomNavigationView.setupWithNavControllerWithLastSelectedTabRestore(
@@ -68,12 +59,12 @@ class GateBotomNav : EditorBaseFragment(){
         )
 
         controller.value?.addOnDestinationChangedListener(
-            fun(controller: NavController, destination: NavDestination, arguments: Bundle?) {
-                if (destination.id == R.id.gateFragment1) {
-                    val navArgument2 = NavArgument.Builder().setDefaultValue("Hello").build()
-                    destination.addArgument("navArg1", navArgument2)
+                fun(controller: NavController, destination: NavDestination, arguments: Bundle?) {
+                    if (destination.id == R.id.gateFragment1) {
+                        val navArgument2 = NavArgument.Builder().setDefaultValue("Hello").build()
+                        destination.addArgument("navArg1", navArgument2)
+                    }
                 }
-            }
         )
 
         currentNavController = controller

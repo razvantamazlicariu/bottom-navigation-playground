@@ -8,10 +8,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import androidx.navigation.fragment.findNavController
 import com.example.android.navigationadvancedsample.R
+import com.example.android.navigationadvancedsample.viewmodels.EditorBaseFragment
 import com.example.android.navigationadvancedsample.viewmodels.SharedViewModel
+import org.koin.androidx.viewmodel.ViewModelParameter
+import org.koin.androidx.viewmodel.koin.getViewModel
+import org.koin.java.KoinJavaComponent
 
-class GateFragment2 : Fragment() {
+class GateFragment2 : EditorBaseFragment() {
+
+    private lateinit var editorViewModelManual:SharedViewModel
 
     override fun setArguments(args: Bundle?) {
         super.setArguments(args)
@@ -26,8 +33,14 @@ class GateFragment2 : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_gate2, container, false)
+        // Inflate the layout for this fragment
+        val parentNavController = (parentFragment?.parentFragment as GateBotomNav).findNavController()
+        val store = parentNavController.getViewModelStoreOwner(R.id.start_nav_graph)?.viewModelStore
+        editorViewModelManual = KoinJavaComponent.getKoin().getViewModel(ViewModelParameter(SharedViewModel::class, null, null, null, store!!, null))
+
+        view.findViewById<TextView>(R.id.tv_instance).text = "GateFragment2 Shared VM Instance:${editorViewModelManual.hashCode().toString()}"
+
         return view;
     }
 }

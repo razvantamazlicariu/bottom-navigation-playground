@@ -9,10 +9,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_instance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="vm"
+            android:gravity="center_horizontal" />
         <LinearLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tv_instance"
+            android:visibility="gone"
             android:orientation="vertical"
             android:padding="20dp">
             <TextView
@@ -49,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_alignParentBottom="true"
-            app:navGraph="@navigation/small_fragment" />
+            app:navGraph="@navigation/picker_fragment" />
     </RelativeLayout>
 
 

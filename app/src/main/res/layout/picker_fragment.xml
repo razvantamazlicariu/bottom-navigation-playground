@@ -4,31 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".scren1.GateBotomNav">
+    tools:context=".picker.PickerFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/tv_instance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="vm"
-            android:gravity="center_horizontal" />
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tv_instance"
-            android:layout_above="@id/fragment_gate_bottom_nav"/>
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/fragment_gate_bottom_nav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/gates_bottom_nav"
-            android:layout_alignParentBottom="true"
+            app:menu="@menu/picker_bottom_nav"
+            android:layout_alignParentTop="true"
             />
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/fragment_gate_bottom_nav"/>
     </RelativeLayout>
-
 </FrameLayout>
